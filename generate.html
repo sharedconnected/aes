@@ -3,6 +3,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script>
 
+var url = prompt("video url eigeben", "");
+var Zugangscode = prompt("Zugangscode eigeben", "");
+var inhalt = encrypt(url)
+
+
 function encrypt(message = '', key = Zugangscode){
     var message = CryptoJS.AES.encrypt(message, key);
     return message.toString();
@@ -17,9 +22,6 @@ function decrypt(message = '', key = Zugangscode){
 console.log(encrypt(''));
 console.log(decrypt('U2FsdGVkX1/0oPpnJ5S5XTELUonupdtYCdO91v+/SMs='))
 
-var url = prompt("video url eigeben", "");
-var Zugangscode = prompt("Zugangscode eigeben", "");
-var inhalt = encrypt(url)
 
 
 document.getElementById("demo").innerHTML = inhalt
