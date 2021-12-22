@@ -1,11 +1,17 @@
+
 <p id="encrypted">encrypted</p>
-<p id="decrypted">decrypted</p>
+<iframe width="100%" hight="100%" id="decrypted">decrypted</iframe>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js">
 </script>
 
 
 <script>
+
+  let vid = window.location.search;
+  let url = vid.replace("?vid=", "");
+  console.log(url);
 
 var Zugangscode = prompt("Zugangscode eigeben", "");
 
@@ -21,13 +27,8 @@ function decrypt(message = '', key = Zugangscode){
 }
 
 
-
-
-
-
-
-var fde = decrypt('U2FsdGVkX186CpvQisYrJ3x9MHKh1TbZiNPf5dOTmrq1SrwevHiyfZLLNmjZEi/v')
+var fen = decrypt(url)
 
 document.getElementById("encrypted").innerHTML = Zugangscode
-document.getElementById("decrypted").innerHTML = fde
+document.getElementById("decrypted").src = fen
 </script>
