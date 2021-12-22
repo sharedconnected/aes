@@ -1,4 +1,3 @@
-
 <p id="encrypted">encrypted</p>
 <iframe width="100%" hight="100%" id="decrypted">decrypted</iframe>
 
@@ -9,9 +8,13 @@
 
 <script>
 
-  let vid = window.location.search;
-  let url = vid.replace("?vid=", "");
-  console.log(url);
+const film = prompt("Name eigeben", "Spiderman");
+
+  const a = film
+  const myJSON = '{"Spiderman":"U2FsdGVkX19dcCadImG9XbOVQwjJVz4Uhb6gsOTxr/QQgdkDvkxdkw/dR2cU1yim", "Bad Boys for life":"U2FsdGVkX18O8Um/ex1AS7hB1gLoZNeLY9q4dlG/vu+ROJrDP+3WjAQLoEq7Ic0k", "Name":"Verschlüsselter Link" }';
+  const myObj = JSON.parse(myJSON);
+  let url = myObj[a];
+    console.log(url);
 
 var Zugangscode = prompt("Zugangscode eigeben", "");
 
