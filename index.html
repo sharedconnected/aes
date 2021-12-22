@@ -1,151 +1,33 @@
-<html lang="en">
-<head>
-    <title>AES (Advanced Encryption Standard) JavaScript implementation in Counter Mode | Movable Type Scripts</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Chris Veness, www.movable-type.co.uk, 2005-2019">
-    <meta name="keywords" content="AES advanced encryption algorithm standard counter mode operation javascript">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <style>
-        button { font-size: 0.9em; }
-        textarea { max-width: 36em; }
-        .production span { background-color: #ffff66; }
-        .production a { font-style: italic; }
-        .local-files fieldset { font-size: 80%; width: 45%; }
-    </style>
-    
-    <script type="module"> /* functional demo */
-        import AesCtr from '//cdn.jsdelivr.net/gh/chrisveness/crypto@latest/aes-ctr.js';
+<p id="encrypted">encrypted</p>
+<p id="decrypted">decrypted</p>
 
-        document.addEventListener('DOMContentLoaded', function(event) {
-            document.querySelector('#password').oninput = function() {
-                const password = document.querySelector('#password').value;
-                const plaintxt = document.querySelector('#plaintxt').value;
-                const t1 = performance.now();
-                const encrtext = AesCtr.encrypt(plaintxt, password, 256);
-                const t2 = performance.now();
-                document.querySelector('#encrtext').value = encrtext;
-                document.querySelector('#time-encrypt').value = (t2-t1).toFixed(3)+'ms';
-                document.querySelector('#encrtext').oninput(); // trigger decrypt
-            };
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js">
+</script>
 
-            document.querySelector('#plaintxt').oninput = function() {
-                const password = document.querySelector('#password').value;
-                const plaintxt = document.querySelector('#plaintxt').value;
-                const t1 = performance.now();
-                const encrtext = AesCtr.encrypt(plaintxt, password, 256);
-                const t2 = performance.now();
-                document.querySelector('#encrtext').value = encrtext;
-                document.querySelector('#time-encrypt').value = (t2-t1).toFixed(3)+'ms';
-                document.querySelector('#encrtext').oninput(); // trigger decrypt
-            };
 
-            document.querySelector('#encrtext').oninput = function() {
-                try {
-                    const password = document.querySelector('#password').value;
-                    const encrtext = document.querySelector('#encrtext').value;
-                    const t1 = performance.now();
-                    const decrtext = AesCtr.decrypt(encrtext, password, 256);
-                    const t2 = performance.now();
-                    document.querySelector('#decrtext').value = decrtext;
-                    document.querySelector('#time-decrypt').value = (t2-t1).toFixed(3)+'ms';
-                } catch (e) {
-                    document.querySelector('#decrtext').value = '';
-                    document.querySelector('#time-decrypt').value = e.message;
-                }
-            };
+<script>
 
-            document.querySelector('#password').oninput(); // trigger initial hash
-        });
-    </script>
-    <script type="module"> /* file encryption/decryption */
-        document.addEventListener('DOMContentLoaded', function(event) {
-            document.querySelector('#src-file').onchange = function() {
-                const file = this.files[0];
-                document.querySelector('#progress').removeAttribute('value'); // set progress to 'indeterminate' during utf8Encode
-                const t1 = performance.now();
-                const worker = new Worker('aes-ctr-file-webworker.js', { type: "module" });
-                worker.postMessage({
-                    op:       'encrypt',
-                    file:     file,
-                    password: document.querySelector('#password').value,
-                    bits:     256,
-                });
-                worker.onmessage = function (msg) {
-                    if (msg.data.progress != 'complete') {   // progress notification
-                        document.querySelector('#progress').value = msg.data.progress * 100; // update progress bar
-                    }
-                    if (msg.data.progress == 'complete') { // completed
-                        document.querySelector('#progress').value = 0;                       // reset progress bar                                                                  // reset progress bar
-                        saveAs(msg.data.ciphertext, file.name+'.encrypted');                 // save to file
-                        const t2 = performance.now();
-                        const t = ((t2-t1)/1000).toFixed(3)+'s';
-                        document.querySelector('#encrypt-file-time').textContent = t;        // display time taken
-                    }
-                }
-            };
+var Zugangscode = prompt("Zugangscode eigeben", "");
 
-            document.querySelector('#enc-file').onchange = function() {
-                const file = this.files[0];
-                document.querySelector('#progress').removeAttribute('value'); // set progress to 'indeterminate'
-                const t1 = performance.now();
-                const worker = new Worker('aes-ctr-file-webworker.js', { type: "module" });
-                worker.postMessage({
-                    op:       'decrypt',
-                    file:     file,
-                    password: document.querySelector('#password').value,
-                    bits:     256,
-                });
-                worker.onmessage = function (msg) {
-                    if (msg.data.progress != 'complete') {  // progress notification
-                        document.querySelector('#progress').value = msg.data.progress * 100;           // update progress bar
-                    }
-                    if (msg.data.progress == 'complete') { // completed
-                        document.querySelector('#progress').value = 0;                                 // reset progress bar
-                        saveAs(msg.data.plaintext, file.name.replace(/\.encrypted$/,'')+'.decrypted'); // save to file
-                        const t2 = performance.now();
-                        const t = ((t2-t1)/1000).toFixed(3)+'s';
-                        document.querySelector('#decrypt-file-time').textContent = t;                  // display time taken
-                    }
-                }
-            };
-        });
-    </script>
+function encrypt(message = '', key = Zugangscode){
+    var message = CryptoJS.AES.encrypt(message, key);
+    return message.toString();
+}
+function decrypt(message = '', key = Zugangscode){
+    var code = CryptoJS.AES.decrypt(message, key);
+    var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
 
-</head>
+    return decryptedMessage;
+}
 
-<body>
 
-<!--[if lt IE 9]><p class="alert align-left">This page no longer works on Internet Explorer 9 and earlier, which are <em><a href="https://www.microsoft.com/en-gb/WindowsForBusiness/End-of-IE-support">no longer supported</a></em></p><![endif]-->
 
-<main>
 
-<form>
-    <fieldset><legend>Functional demo</legend>
-        <ul>
-            <li>
-                <label for="password">Password</label>
-                <input type="text" name="password" id="password" class="w12">
-            </li>
-            <li>
-                <label for="plaintxt">Plaintext</label>
-                <textarea name="plaintxt" id="plaintxt" class="width-full"></textarea>
-            </li>
-            <li>
-                <label>Encrypted text</label>
-                <textarea name="encrtext" id="encrtext" class="width-full"></textarea>
-                <output class="small grey" id="time-encrypt">1.000ms</output>
-            </li>
-            <li>
-                <label>Decrypted text</label>
-                <textarea name="decrtext" id="decrtext" readonly="" class="width-full"></textarea>
-                <output class="small grey" id="time-decrypt">0.000ms</output>
-            </li>
-        </ul>
-    </fieldset>
-</form>
 
-</main>
 
-</body>
-</html>
+
+var fde = decrypt('U2FsdGVkX186CpvQisYrJ3x9MHKh1TbZiNPf5dOTmrq1SrwevHiyfZLLNmjZEi/v')
+
+document.getElementById("encrypted").innerHTML = Zugangscode
+document.getElementById("decrypted").innerHTML = fde
+</script>
