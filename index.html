@@ -5,15 +5,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js">
 </script>
-
-
 <script>
+const myJSON = '{"Spiderman":"U2FsdGVkX19dcCadImG9XbOVQwjJVz4Uhb6gsOTxr/QQgdkDvkxdkw/dR2cU1yim", "Bad Boys for life":"U2FsdGVkX18O8Um/ex1AS7hB1gLoZNeLY9q4dlG/vu+ROJrDP+3WjAQLoEq7Ic0k", "Math":"U2FsdGVkX1849Xoi6PJn/6Zxe8WBkMVkW3J0ZcGw8BzLE/eZv9PAaVyGn7zcEosiqtPAlZzR+tM2hZfAxruxpiMPGQDcJm8NI/xxKsr7Mxxwxew8GoJlX/T7cCGv/ArlTgV6NqQ5nY8FDvo9TJUCHg==", "Marmaduke":"U2FsdGVkX1/L9zFY065ckU49eHPu+Btvhht3GR2HtYNB2JBDN5usnQHsxnzHSxi1Z3PULSJ/OWhF8s16+gCEHQ==" }';
+
 
 const film = prompt("Name eigeben", "Spiderman");
 
   const a = film
-  const myJSON = '{"Spiderman":"U2FsdGVkX19dcCadImG9XbOVQwjJVz4Uhb6gsOTxr/QQgdkDvkxdkw/dR2cU1yim", "Bad Boys for life":"U2FsdGVkX18O8Um/ex1AS7hB1gLoZNeLY9q4dlG/vu+ROJrDP+3WjAQLoEq7Ic0k", "Math":"U2FsdGVkX1849Xoi6PJn/6Zxe8WBkMVkW3J0ZcGw8BzLE/eZv9PAaVyGn7zcEosiqtPAlZzR+tM2hZfAxruxpiMPGQDcJm8NI/xxKsr7Mxxwxew8GoJlX/T7cCGv/ArlTgV6NqQ5nY8FDvo9TJUCHg==", "Marmaduke":"U2FsdGVkX1/L9zFY065ckU49eHPu+Btvhht3GR2HtYNB2JBDN5usnQHsxnzHSxi1Z3PULSJ/OWhF8s16+gCEHQ==" }';
-  //https://gist.githubusercontent.com/FlipTip/ae2d15f0f86754ddba803c7b89b1791b/raw/54d414fd601b575a3976b994522caf480a57dd01/links.json
+//https://gist.githubusercontent.com/FlipTip/ae2d15f0f86754ddba803c7b89b1791b/raw/54d414fd601b575a3976b994522caf480a57dd01/links.json
   const myObj = JSON.parse(myJSON);
   let url = myObj[a];
     console.log(url);
@@ -32,8 +31,8 @@ function decrypt(message = '', key = Zugangscode){
 }
 
 
-var fen = decrypt(url)
+var video = decrypt(url)
 
 document.getElementById("encrypted").innerHTML = Zugangscode
-document.getElementById("decrypted").src = fen
+document.getElementById("decrypted").src = video
 </script>
