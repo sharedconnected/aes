@@ -1,10 +1,10 @@
 <html>
   <head>
   </head>
-  
-  <body>
-    
-<p id="encrypted">encrypted</p>
+
+  <body style="background-color: black;">
+
+<p id="encrypted">Kein Zugangscode Angegeben</p>
 
 <iframe id="decrypted" scrolling="no" allowfullscreen="" width="100%" height="630" frameborder="0">video</iframe>
 
@@ -40,7 +40,7 @@ function decrypt(message = '', key = Zugangscode){
 
 var video = decrypt(url)
 
-document.getElementById("encrypted").innerHTML = Zugangscode
+document.getElementById("encrypted").innerHTML = "Angegebener Zugangscode: " + Zugangscode
 document.getElementById("decrypted").src = video
 </script>
 </body></html>
