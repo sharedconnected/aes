@@ -2,27 +2,26 @@
   <head>
   </head>
 
-  <body style="background-color: black;">
+  <body style="background-color: black; color: lime">
 
 <p id="encrypted">Kein Zugangscode Angegeben</p>
 
 <iframe id="decrypted" scrolling="no" allowfullscreen="" width="100%" height="630" frameborder="0">video</iframe>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
 <script>
 const myJSON = '{"Spiderman":"U2FsdGVkX19dcCadImG9XbOVQwjJVz4Uhb6gsOTxr/QQgdkDvkxdkw/dR2cU1yim", "Bad Boys for life":"U2FsdGVkX1+Wknwh+qCs62bvsQUVFZX0UUCcfEdYwX1VHckB+QkG6HOQ1EvaqyG1", "Math":"U2FsdGVkX1849Xoi6PJn/6Zxe8WBkMVkW3J0ZcGw8BzLE/eZv9PAaVyGn7zcEosiqtPAlZzR+tM2hZfAxruxpiMPGQDcJm8NI/xxKsr7Mxxwxew8GoJlX/T7cCGv/ArlTgV6NqQ5nY8FDvo9TJUCHg==", "Marmaduke":"U2FsdGVkX19OOeClJiKoltoCP0HHXWAk807fykPxT4XhlQ1O8tBmbLiueH4q+aA/CUIy3c6mfUGWEZJ79sATUJwOAONDPA/NevT2dLHGxOA=", "Spider":"U2FsdGVkX197IdpPazIE7cNkMbBm+J7BzWIidRA5du1Ju9b283p/EIVaCRW2DIuK3w9/ScEHVkAFJR+LjiKaRw==", "Weihnachtsstern":"U2FsdGVkX1+T0Ry/+Y1rsT72Tw12W27r+uMHjUF2NAFAniL94LypLHJ1VLGSheXG3bO1CSlHpa5a8SyvGiSgnQlqqHa9/Q7fNTLKVgYao5g=" }';
 
 
 
-const film = prompt("Name eigeben", "Spiderman");
-
-  const a = film
+const film = prompt("Name vom Film eigeben", "Spiderman");
 //https://gist.githubusercontent.com/FlipTip/ae2d15f0f86754ddba803c7b89b1791b/raw/54d414fd601b575a3976b994522caf480a57dd01/links.json
-  const myObj = JSON.parse(myJSON);
-  let url = myObj[a];
-    console.log(url);
+const a = film
+const myObj = JSON.parse(myJSON);
+let url = myObj[a];
+  console.log(url);
 
 var Zugangscode = prompt("Zugangscode eigeben", "");
 
@@ -37,10 +36,13 @@ function decrypt(message = '', key = Zugangscode){
     return decryptedMessage;
 }
 
-
 var video = decrypt(url)
 
 document.getElementById("encrypted").innerHTML = "Angegebener Zugangscode: " + Zugangscode
 document.getElementById("decrypted").src = video
 </script>
-</body></html>
+
+<p>Für ein besseres Erlebnis AdBlocker benutzen</p>
+
+</body>
+</html>
