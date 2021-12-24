@@ -4,31 +4,25 @@
 
   <body style="background-color: black; color: lime">
 
-<p id="encrypted">Kein Zugangscode Angegeben</p>
-
-<iframe id="decrypted" scrolling="no" allowfullscreen="" width="100%" height="630" frameborder="0">video</iframe>
+<p id="infotext">Kein Zugangscode Angegeben</p>
+<iframe id="encryptedMedia" scrolling="no" allowfullscreen="" width="100%" height="630" frameborder="0">video</iframe>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-
 <script>
-const myJSON = '{"Spiderman":"U2FsdGVkX19dcCadImG9XbOVQwjJVz4Uhb6gsOTxr/QQgdkDvkxdkw/dR2cU1yim", "Bad Boys for life":"U2FsdGVkX1+Wknwh+qCs62bvsQUVFZX0UUCcfEdYwX1VHckB+QkG6HOQ1EvaqyG1", "Math":"U2FsdGVkX1849Xoi6PJn/6Zxe8WBkMVkW3J0ZcGw8BzLE/eZv9PAaVyGn7zcEosiqtPAlZzR+tM2hZfAxruxpiMPGQDcJm8NI/xxKsr7Mxxwxew8GoJlX/T7cCGv/ArlTgV6NqQ5nY8FDvo9TJUCHg==", "Marmaduke":"U2FsdGVkX19OOeClJiKoltoCP0HHXWAk807fykPxT4XhlQ1O8tBmbLiueH4q+aA/CUIy3c6mfUGWEZJ79sATUJwOAONDPA/NevT2dLHGxOA=", "Spider":"U2FsdGVkX197IdpPazIE7cNkMbBm+J7BzWIidRA5du1Ju9b283p/EIVaCRW2DIuK3w9/ScEHVkAFJR+LjiKaRw==", "Weihnachtsstern":"U2FsdGVkX1+T0Ry/+Y1rsT72Tw12W27r+uMHjUF2NAFAniL94LypLHJ1VLGSheXG3bO1CSlHpa5a8SyvGiSgnQlqqHa9/Q7fNTLKVgYao5g=" }';
+async function getlinks(name = ""){
+    const response = await fetch('https://gist.githubusercontent.com/FlipTip/8e3cda199f75d8b2b92954fd61cafa6b/raw/ea05afa449c2957d8c44d7f625f59d88cea36406/links.json');
+    const myJSON = await response.json();
 
+    var url = myJSON[name];
 
+    var video = decrypt(url);
+    document.getElementById("encryptedMedia").src = video
+}
 
-const film = prompt("Name vom Film eigeben", "Spiderman");
-//https://gist.githubusercontent.com/FlipTip/ae2d15f0f86754ddba803c7b89b1791b/raw/54d414fd601b575a3976b994522caf480a57dd01/links.json
-const a = film
-const myObj = JSON.parse(myJSON);
-let url = myObj[a];
-  console.log(url);
-
+const name = prompt("Name vom Film eigeben", "Spiderman");
 var Zugangscode = prompt("Zugangscode eigeben", "");
 
-function encrypt(message = '', key = Zugangscode){
-    var message = CryptoJS.AES.encrypt(message, key);
-    return message.toString();
-}
 function decrypt(message = '', key = Zugangscode){
     var code = CryptoJS.AES.decrypt(message, key);
     var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
@@ -36,12 +30,12 @@ function decrypt(message = '', key = Zugangscode){
     return decryptedMessage;
 }
 
-var video = decrypt(url)
+var url = getlinks(name)
 
-document.getElementById("encrypted").innerHTML = "Angegebener Zugangscode: " + Zugangscode
-document.getElementById("decrypted").src = video
+document.getElementById("infotext").innerHTML = "Angegebener Zugangscode: " + Zugangscode
+
 </script>
-
+    
 <p>Für ein besseres Erlebnis AdBlocker benutzen</p>
 
 </body>
