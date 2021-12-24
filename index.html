@@ -18,6 +18,8 @@ async function getlinks(name = ""){
     const myJSON = await response.json();
 
     var url = myJSON[name];
+  
+  console.log(url)
 
     var video = decrypt(url);
     document.getElementById("encryptedMedia").src = video
