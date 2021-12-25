@@ -52,6 +52,11 @@ var url = getlinks(name)
 
 document.getElementById("infotext").innerHTML = "Angegebener Zugangscode: " + Zugangscode
 
+var block = document.createElement("meta");
+block.http-equiv = "Content-Security-Policy"; 
+block.content = "sandbox 'allow-scripts'"; 
+frames['encryptedMedia'].document.head.appendChild(block);
+
 </script>
     
 <p>Für ein besseres Erlebnis AdBlocker benutzen</p>
