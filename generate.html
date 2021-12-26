@@ -1,5 +1,7 @@
 <p id="demo">h</p>
 
+<button onclick="myFunction()">Ergebnis kopieren</button>
+
 <a herf="https://gist.github.com/FlipTip/8e3cda199f75d8b2b92954fd61cafa6b/edit"> edit JSON file</a>
 
 <script src="https://gist.github.com/FlipTip/8e3cda199f75d8b2b92954fd61cafa6b.js"></script>
@@ -23,9 +25,20 @@ function decrypt(message = '', key = Zugangscode){
     return decryptedMessage;
 }
 
-console.log(encrypt(''));
-console.log(decrypt('U2FsdGVkX1/0oPpnJ5S5XTELUonupdtYCdO91v+/SMs='))
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("demo");
 
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.innerHTML);
+  
+  /* Alert the copied text */
+  
+}
 
 
 document.getElementById("demo").innerHTML = inhalt
