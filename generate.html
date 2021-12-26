@@ -1,6 +1,7 @@
 <p id="demo">h</p>
 
-<button onclick="myFunction()">Ergebnis kopieren</button>
+<input hidden type="text" value="" id="data">
+<button onclick="myFunction()">Url copieren</button>
 
 <a herf="https://gist.github.com/FlipTip/8e3cda199f75d8b2b92954fd61cafa6b/edit"> edit JSON file</a>
 
@@ -41,5 +42,5 @@ function myFunction() {
 }
 
 
-document.getElementById("demo").innerHTML = inhalt
+document.getElementById("data").value = inhalt
 </script>
