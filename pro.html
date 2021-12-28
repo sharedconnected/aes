@@ -19,7 +19,7 @@
 
   <body>
 
-<p id="infotext">Kein Zugangscode Angegeben</p>
+<p id="filme">Kein Zugangscode Angegeben</p>
 <a href="/request" style="color: #00a8ea;">Hier findest du deine persönliche url für das Filme-Request Formular</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
@@ -30,7 +30,7 @@ async function getlinks(name = ""){
 
     var filme = (Object.keys(myJSON))
 
-    document.getElementById("infotext").innerHTML = filme
+    document.getElementById("filme").innerHTML = filme
 
   console.log(url)
 
