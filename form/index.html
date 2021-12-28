@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- charset -->
+    <meta charset="utf-8">
+
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Formulator</title>
+
+    <!-- css style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/toastr.min.css">
+</head>
+
+<body>
+    <img class="banner" src="img/formulator-logo.png" alt="Formulator" />
+    
+    <p class="about">
+        This page features a form example (down below) which utilizes the Formulator Cloudflare Worker to handle serverless form submissions.
+        <br>
+        For more information please visit: <a class="about-link" href="https://github.com/tsredanovic/cfw-formulator" target="_blank">Formulator on Github</a>.
+    </p>
+
+    <div class="container">
+        <form class="main-form" method="post" action="https://formulator.tsredanovic.workers.dev">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="name" name="Name" placeholder="Your name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col">
+                    <input type="email" id="email" name="Email" placeholder="Your email..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="message">Message</label>
+                </div>
+                <div class="col">
+                    <textarea id="message" name="Message" placeholder="Write something.."
+                        style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <!-- JS -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/form.js"></script>
+</body>
+
+</html>
