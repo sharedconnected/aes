@@ -17,8 +17,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <form class="main-form" method="post" action="https://links.lincatch.workers.dev">
+    <form class="main-form" method="post" action="https://links.lincatch.workers.dev">
             <div class="row">
                 <div class="col">
                     <label for="name">Name</label>
@@ -32,7 +31,7 @@
                     <label for="email">Email</label>
                 </div>
                 <div class="col">
-                    <input type="email" id="email" name="Email" placeholder="Your email..">
+                    <div class="fx-relay-email-input-wrapper"><input type="email" id="email" name="Email" placeholder="Your email.." style="padding-right: 42px;"><div class="fx-relay-icon" style="top: 0px; bottom: 0px;"><button class="fx-relay-button" id="fx-relay-button" type="button" title="Generate new alias"></button></div></div>
                 </div>
             </div>
             <div class="row">
@@ -40,21 +39,13 @@
                     <label for="message">Message</label>
                 </div>
                 <div class="col">
-                    <textarea id="message" name="Message" placeholder="Write something.."
-                        style="height:200px"></textarea>
+                    <textarea id="message" name="Message" placeholder="Write something.." style="height:200px"></textarea>
                 </div>
             </div>
             <div class="row">
                 <input type="submit" value="Submit">
             </div>
         </form>
-    </div>
-
-    <!-- JS -->
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/axios.min.js"></script>
-    <script src="js/toastr.min.js"></script>
-    <script src="js/form.js"></script>
 </body>
 
 </html>
