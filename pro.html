@@ -43,6 +43,20 @@ var url = getlinks(name)
 document.getElementById("infotext").innerHTML = "Angegebener Zugangscode: " + Zugangscode
 </script>
 
-
+<p id="infotext">Kein Zugangscode Angegeben</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script>
+async function getlinks(name = ""){
+    const response = await fetch('https://gist.githubusercontent.com/sharedconnected/2ed094e0c789a26a8af24e49f74e03da/raw/');
+    const myJSON = await response.json();
+    var filme = myJSON[name];
+    document.getElementById("infotext").innerHTML = filme
+}
+const name = 'event';
+var url = getlinks(name)
+document.getElementById("infotext").innerHTML = "Angegebener Zugangscode: " + Zugangscode
+</script>
+    
+    
 </body>
 </html>
