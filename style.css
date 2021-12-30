@@ -1,8 +1,5 @@
 body { 
        background-color: black;
        color: lime;
-}
-
-#infotext {
-      font-family: "Museo Sans",sans-serif;
+       font-family: "Museo Sans",sans-serif;
 }
