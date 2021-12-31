@@ -20,25 +20,11 @@
 
   <body>
 
-<p id="filme">Kein Zugangscode Angegeben</p>
+<ul id="filme">
+<script src="filme.js"></script>
+
 <a referrerpolicy="origin" href="//lincatch.tk/request" style="color: #00a8ea;">Hier findest du deine persönliche url für das Filme-Request Formular</a>
 
-<script>
-async function getlinks(name = ""){
-    const response = await fetch('https://gist.githubusercontent.com/sharedconnected/18799a006a228d90abd1f5609827c29b/raw/');
-    const myJSON = await response.json();
-
-    var filme = (Object.keys(myJSON))
-
-    document.getElementById("filme").innerHTML = filme
-
-  console.log(url)
-
-    var video = decrypt(url);
-
-}
-var url = getlinks(name)
-</script>
 
 <p id="infotext">Releases</p>
 <script>
