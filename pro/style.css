@@ -1,0 +1,25 @@
+body { 
+  font-family: sans-serif;
+  background-color: black;
+  color: lime;
+}
+
+
+#filme {
+  background-color: #333;
+  padding-block: .5em;
+  margin-top: -.5em;
+  
+}
+
+#filme li {
+  margin-block: 0.13em;
+}
+
+#infotext {
+  background-color: #093c37;
+  margin: 0em;
+  padding: 1em;
+  margin-bottom: 2em;
+  
+}
