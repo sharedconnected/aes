@@ -2,7 +2,13 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: same-orgin
-  Content-Security-Policy: default-src 'self' static.cloudflareinsights.com;
+  Content-Security-Policy: default-src 'self' lincatch.tk *.cloudflareinsights.com;
+
+/test
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-orgin
+  Content-Security-Policy: default-src 'self' lincatch.tk *.cloudflareinsights.com;
 
 /*
   X-Frame-Options: DENY
