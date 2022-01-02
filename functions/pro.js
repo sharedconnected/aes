@@ -14,7 +14,7 @@ const BASIC_PASS = 'Pro24341'
  * @returns {Promise<Response>}
  */
 
-export async function handleRequest(request) {
+export async function onRequest(request) {
   const { protocol, pathname } = new URL(request.url)
 
   // In the case of a "Basic" authentication, the exchange
