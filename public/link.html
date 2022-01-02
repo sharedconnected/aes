@@ -1,0 +1,16 @@
+<head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+</head>
+
+<body>
+<a id="infotext">Releases</a>
+<script>
+async function getlinks(name = ""){
+    const response = await fetch('/request');
+    const url = await response;
+    document.getElementById("infotext").href = url
+}
+const name = 'event';
+var url = getlinks(name)
+</script>
+</body>
