@@ -1,3 +1,6 @@
 /pro/ /pro 301
 /github https://github.com/sharedconnected/aes 302
 /pro+ /pro 302
+/proworker https://dash.cloudflare.com/42108122ce7cf599a13a0fbdfec55c8d/workers/services/view/pro-dashboard/production
+/analystics https://dash.cloudflare.com/42108122ce7cf599a13a0fbdfec55c8d/web-analytics/overview?siteTag~in=8657ee1264e5458aa95f78e2d126f21f
+/logs https://dash.cloudflare.com/42108122ce7cf599a13a0fbdfec55c8d/lincatch.tk/firewall
