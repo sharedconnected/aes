@@ -6,7 +6,7 @@
 <a id="infotext">Releases</a>
 <script>
 async function getlinks(name = ""){
-    const response = await fetch('file:///Users/UllisiMac/github/request');
+    const response = await fetch('/request');
     const url = await response;
     document.getElementById("infotext").href = url
 }
