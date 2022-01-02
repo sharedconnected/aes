@@ -27,27 +27,7 @@ export async function onRequest(request) {
     case '/':
       return new Response('Anyone can access the homepage.')
 
-    case '/request': {
-      // The "Authorization" header is sent when authenticated.
-      if (request.headers.has('Authorization')) {
-        // Throws exception when authorization fails.
-        const { user, pass } = basicAuthentication(request)
-        verifyCredentials(user, pass)
-
-        // Only returns this response when no exception is thrown.
-        return fetch(request)
-      }
-
-      // Not authenticated.
-      return new Response('You need to login.', {
-        status: 401,
-        headers: {
-          // Prompts the user for credentials.
-          'WWW-Authenticate': 'Basic realm="url Generierung", charset="UTF-8"'
-        }
-      })
-    }
-
+    case '/pro/':
     case '/pro': {
       // The "Authorization" header is sent when authenticated.
       if (request.headers.has('Authorization')) {
@@ -68,10 +48,6 @@ export async function onRequest(request) {
         }
       })
     }
-
-    case '/favicon.ico':
-    case '/robots.txt':
-      return new Response(null, { status: 204 })
   }
 
   return new Response('Not Found.', { status: 404 })
